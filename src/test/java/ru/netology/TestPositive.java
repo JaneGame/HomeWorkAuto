@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.sql.Driver;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class TestPositive {
 
     @BeforeAll
     static void setupAll(){
-        System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver(2).exe");
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
@@ -26,7 +28,7 @@ public class TestPositive {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.get("http://localhost:9999");
     }
 

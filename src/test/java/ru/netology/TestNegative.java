@@ -1,5 +1,6 @@
 package ru.netology;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ public class TestNegative {private WebDriver driver;
 
     @BeforeAll
     static void setupAll(){
-        System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver(2).exe");
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
@@ -22,7 +23,7 @@ public class TestNegative {private WebDriver driver;
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.get("http://localhost:9999");
     }
 
