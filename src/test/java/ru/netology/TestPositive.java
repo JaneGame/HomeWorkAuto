@@ -46,7 +46,7 @@ public class TestPositive {
         name.get(1).sendKeys("+79168455555");
         driver.findElement(By.cssSelector("[class='checkbox__box']")).click();
         driver.findElement(By.className("button__text")).click();
-        String actual = driver.findElement(By.className("paragraph")).getText().strip();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().strip();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         Assertions.assertEquals(actual, expected);
 
